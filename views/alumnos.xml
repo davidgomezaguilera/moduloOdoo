@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<data>
+
+		<record model="ir.actions.act_window" id="practicaSGE.action_window2">
+			<field name="name">Alumnos</field>
+			<field name="res_model">practica.alumno</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="practicaSGE.lista_alumnos_form" model="ir.ui.view">
+			<field name="name">practica.alumno.form</field>
+			<field name="model">practica.alumno</field>
+			<field name="arch" type="xml">
+				<form string="Lista de Alumnos">
+					<sheet>
+						<div class="oe_tittle">
+							<label for="name" class="oe_edit_only" string="Nombre y apellidos">Nombre y apellidos</label>
+							<h1><field name="nombre"/></h1>
+						</div>
+						<separator string="Datos del alumno" colspan="3"/>
+						<group colspan="3" col="2">
+							<field name="edad"/>
+							<field name="localidad"/>
+							<field name="provincia"/>
+							<field name="email"/>
+						</group>
+						<field name="convalidacion_id"/>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="practicaSGE.lista_alumnos" model="ir.ui.view">
+			<field name="name">Lista alumnos</field>
+			<field name="model">practica.alumno</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="nombre"/>
+					<field name="edad"/>
+					<field name="localidad"/>
+					<field name="provincia"/>
+					<field name="email"/>
+					<field name="convalidacion_id">
+						<tree string="Convalidaciones del alumno">
+							<field name="modulo_id"/>
+							<field name="alumno_id"/>
+							<field name="fecha_convalidacion"/>
+						</tree>
+					</field>
+				</tree>
+			</field>
+		</record>
+	
+
+<!-- MENU-->
+	<menuitem name="Convalidaciones" id="practicaSGE.menu_root"/>
+
+	<menuitem name="Alumnos" id="practicaSGE.alumnos" parent="practicaSGE.menu_root"/>
+	<menuitem name="Lista de Alumnos" id="practicaSGE.listado_alumnos" parent="practicaSGE.alumnos" action="practicaSGE.action_window2"/>
+
+
+
+	</data>
+
+</odoo>

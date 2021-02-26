@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <report
+        id="report_convalidaciones"
+        model="practica.convalidacion"
+        string="Convalidaciones"
+        report_type="qweb-pdf"
+        name="practicaSGE.report_convalidaciones_template"
+    />
+
+    <template id="report_convalidaciones_template">
+        <div class="header" style="border-bottom: 2px solid black">
+            <h3 class="text-center">Listado de Convalidaciones</h3>
+            <h4 class="text-center">
+                <strong>From</strong>:
+                <t t-esc="date_start"/>
+                <strong>To</strong>:
+                <t t-esc="date_end"/>
+            </h4>
+        </div>
+        <div class="article">
+            <table class="table table-condensed table-bordered" style="width: 100%">
+                <thead>
+                    <th class="text-center" style="width: 70%">Fecha</th>
+                    <th class="text-center" style="width: 15%">Módulo</th>
+                    <th class="text-center" style="width: 15%">Alumno</th>
+                </thead>
+                <tbody>
+                    <t t-foreach="docs" t-as="doc">
+                        <tr>
+                            <td>
+                                <span t-esc="doc['fecha_convalidacion']"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="doc['modulo_id']"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="doc['alumno_id']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <div class="row text-center" style="border-top: 1px solid black;">
+                <div class="col-xs-3 col-xs-offset-9 text-right">
+                    <ul class="list-inline" style="margin-top:10px;">
+                        <li>Page:</li>
+                        <li>
+                            <span class="page"/>
+                        </li>
+                        <li>/</li>
+                        <li>
+                            <span class="topage"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

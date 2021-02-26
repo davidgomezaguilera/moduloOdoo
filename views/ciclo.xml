@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="practicaSGE.lista_ciclos_tree">
+			<field name="name">practica.ciclo.lista.tree</field>
+			<field name="model">practica.ciclo</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="nombre"/>
+					<field name="descripcion"/>
+					<field name="modulos_id">
+						<tree string="Modulos que se imparten">
+							<field name="nombre"/>
+							<field name="descripcion"/>
+						</tree>
+					</field>
+				</tree>
+			</field>
+		</record>
+
+		<record id="practicaSGE.lista_ciclos_form" model="ir.ui.view">
+			<field name="name">practica.ciclo.lista.form</field>
+			<field name="model">practica.ciclo</field>
+			<field name="arch" type="xml">
+				<form string="Lista de Ciclos">
+					<div>
+						<label for="name" string="Nombre">Nombre</label>
+						<h1><field name="nombre"/></h1>
+					</div>
+					<field name="descripcion"/>
+					<field name="modulos_id"/>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="practicaSGE.action_window_ciclo">
+			<field name="name">Ciclos</field>
+			<field name="res_model">practica.ciclo</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree, form</field>
+		</record>
+
+		<menuitem name="Ciclos" id="practicaSGE.ciclos" parent="practicaSGE.menu_root"/>
+
+		<menuitem name="Lista de Ciclos" id="practicaSGE.lista_ciclos" parent="practicaSGE.ciclos" action="practicaSGE.action_window_ciclo"/>
+	</data>
+</odoo>

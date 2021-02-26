@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<data>
+
+		<act_window id="practicaSGE_modulo_action" name="Modulo"
+			res_model="practica.modulo"/>
+
+		<record id="practicaSGE.lista_modulos" model="ir.ui.view">
+			<field name="name">Lista modulos</field>
+			<field name="model">practica.modulo</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="nombre"/>
+					<field name="descripcion"/>
+					<field name="ciclo_id">
+						<tree string="Ciclos que se imparten en este Módulo">
+							<field name="nombre"/>
+							<field name="descripcion"/>
+						</tree>
+					</field>
+				</tree>
+			</field>
+		</record>
+	
+		<record id="practicaSGE.lista_modulos_form" model="ir.ui.view">
+			<field name="name">practica.modulo.form</field>
+			<field name="model">practica.modulo</field>
+			<field name="arch" type="xml">
+				<form string="Lista de Modulos">
+					<sheet>
+						<div class="oe_tittle">
+							<label for="name" class="oe_edit_only" string="Nombre">Nombre</label>
+							<h1><field name="nombre"/></h1>
+						</div>
+						<separator string="Datos del módulo" colspan="3"/>
+						<field name="descripcion"/>
+						<field name="ciclo_id"/>
+					</sheet>
+				</form>
+			</field>
+		</record>
+<!-- MENU-->
+	
+/>
+
+	<menuitem name="Modulos" id="practicaSGE.modulos" parent="practicaSGE.menu_root"/>
+	<menuitem name="Lista de Modulos" id="practicaSGE.listado_modulos" parent="practicaSGE.modulos" action="practicaSGE_modulo_action"/>
+
+
+
+	</data>
+
+</odoo>
